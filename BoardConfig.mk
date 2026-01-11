@@ -137,13 +137,8 @@ TW_USE_FSCRYPT_POLICY := 2
 TW_PREPARE_DATA_MEDIA_EARLY := true
 
 # 4. 修复启动模式切换问题（misc处理）
-# 关键：防止TWRP写入boot-recovery标志到misc分区
-TW_NO_REBOOT_RECOVERY := true
-TW_NO_REBOOT_BOOTLOADER := true
 # 允许通过工具盒重启
 TW_USE_TOOLBOX := true
-# 禁用默认的misc处理
-TW_EXCLUDE_DEFAULT_USB_INIT := true
 # 三星设备特有的下载模式支持
 TW_HAS_DOWNLOAD_MODE := true
 
@@ -171,3 +166,9 @@ TW_INCLUDE_REPACKTOOLS := true
 TW_INCLUDE_FASTBOOTD := true
 TW_Y_OFFSET := 0
 TW_H_OFFSET := 0
+TW_EXCLUDE_TWRPAPP := true
+# 使用高压缩率的算法
+BOARD_RAMDISK_USE_XZ := true
+# 关闭调试符号
+TARGET_STRIP := true
+WITHOUT_CHECK_API := true
