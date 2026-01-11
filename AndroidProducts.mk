@@ -6,9 +6,9 @@
 #
 
 PRODUCT_MAKEFILES := \
-    $(LOCAL_DIR)/omni_bloomxq.mk
+    $(LOCAL_DIR)/twrp_bloomxq.mk
 
 COMMON_LUNCH_CHOICES := \
-    omni_bloomxq-user \
-    omni_bloomxq-userdebug \
-    omni_bloomxq-eng
+    twrp_bloomxq-user \
+    twrp_bloomxq-userdebug \
+    twrp_bloomxq-eng
