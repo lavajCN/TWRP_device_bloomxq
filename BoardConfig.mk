@@ -169,6 +169,3 @@ TW_H_OFFSET := 0
 TW_EXCLUDE_TWRPAPP := true
 # 使用高压缩率的算法
 BOARD_RAMDISK_USE_XZ := true
-# 关闭调试符号
-TARGET_STRIP := true
-WITHOUT_CHECK_API := true
