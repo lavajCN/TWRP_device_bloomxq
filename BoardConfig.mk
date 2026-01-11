@@ -116,7 +116,6 @@ TW_BRIGHTNESS_PATH := "/sys/class/backlight/panel0-backlight/brightness"
 TW_MAX_BRIGHTNESS := 50000
 TW_DEFAULT_BRIGHTNESS := 25000
 # 如果上述路径无效，尝试常见的三星亮度路径
-TW_SECONDARY_BRIGHTNESS_PATH := "/sys/class/backlight/panel/brightness"
 
 # 2. 修复震动问题
 TW_HAVE_VIBRATOR := true
@@ -152,7 +151,7 @@ TW_HAS_DOWNLOAD_MODE := true
 # 对于折叠屏/双屏设备，尝试禁用副屏或设置其亮度为0
 TW_NO_SECONDARY_BRIGHTNESS := true
 TW_SECONDARY_BRIGHTNESS_PATH := "/sys/class/backlight/panel1-backlight/brightness"
-TW_MAX_SECONDARY_BRIGHTNESS := 255
+TW_MAX_SECONDARY_BRIGHTNESS := 50000
 TW_DEFAULT_SECONDARY_BRIGHTNESS := 0
 # 尝试在启动时禁用副屏
 TW_SCREEN_BLANK_ON_BOOT := true
