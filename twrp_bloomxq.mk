@@ -16,7 +16,7 @@ $(call inherit-product, vendor/omni/config/common.mk)
 $(call inherit-product, device/samsung/bloomxq/device.mk)
 
 PRODUCT_DEVICE := bloomxq
-PRODUCT_NAME := omni_bloomxq
+PRODUCT_NAME := twrp_bloomxq
 PRODUCT_BRAND := samsung
 PRODUCT_MODEL := SM-F707N
 PRODUCT_MANUFACTURER := samsung
