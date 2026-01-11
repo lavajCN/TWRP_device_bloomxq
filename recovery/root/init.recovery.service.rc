@@ -1,0 +1,13 @@
+service fix-brightness /sbin/brightness_fix.sh
+    class main
+    user root
+    group root
+    seclabel u:r:recovery:s0
+    oneshot
+
+service fix-vibrator /sbin/vibrator_fix.sh
+    class main
+    user root
+    group root
+    seclabel u:r:recovery:s0
+    oneshot
