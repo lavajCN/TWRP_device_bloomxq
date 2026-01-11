@@ -107,3 +107,68 @@ TW_EXTRA_LANGUAGES := true
 TW_SCREEN_BLANK_ON_BOOT := true
 TW_INPUT_BLACKLIST := "hbtp_vm"
 TW_USE_TOOLBOX := true
+
+# ========== 以下是修复5个问题的核心配置 ==========
+
+# 1. 修复亮度问题
+# 根据您之前的测试，最大亮度是50000，设置默认值为50%左右
+TW_BRIGHTNESS_PATH := "/sys/class/backlight/panel0-backlight/brightness"
+TW_MAX_BRIGHTNESS := 50000
+TW_DEFAULT_BRIGHTNESS := 25000
+# 如果上述路径无效，尝试常见的三星亮度路径
+TW_SECONDARY_BRIGHTNESS_PATH := "/sys/class/backlight/panel/brightness"
+
+# 2. 修复震动问题
+TW_HAVE_VIBRATOR := true
+TW_VIBRATOR_PATH := "/sys/class/timed_output/vibrator"
+# 如果上述路径无效，尝试其他常见路径
+TW_VIBRATOR_PATH_ALT := "/sys/class/leds/vibrator"
+TW_VIBRATOR_MAX_STRENGTH := 100
+TW_VIBRATOR_FREQ := 100
+
+# 3. 修复数据解密问题
+# 三星设备使用FBE（File-Based Encryption），需要这些配置
+TW_INCLUDE_CRYPTO := true
+TW_INCLUDE_CRYPTO_FBE := true
+TW_INCLUDE_FBE_METADATA_DECRYPT := true
+BOARD_USES_METADATA_PARTITION := true
+# 使用文件级加密策略v2
+TW_USE_FSCRYPT_POLICY := 2
+# 提前准备数据媒体，有助于解密
+TW_PREPARE_DATA_MEDIA_EARLY := true
+
+# 4. 修复启动模式切换问题（misc处理）
+# 关键：防止TWRP写入boot-recovery标志到misc分区
+TW_NO_REBOOT_RECOVERY := true
+TW_NO_REBOOT_BOOTLOADER := true
+# 允许通过工具盒重启
+TW_USE_TOOLBOX := true
+# 禁用默认的misc处理
+TW_EXCLUDE_DEFAULT_USB_INIT := true
+# 三星设备特有的下载模式支持
+TW_HAS_DOWNLOAD_MODE := true
+
+# 5. 修复副屏冻结问题
+# 对于折叠屏/双屏设备，尝试禁用副屏或设置其亮度为0
+TW_NO_SECONDARY_BRIGHTNESS := true
+TW_SECONDARY_BRIGHTNESS_PATH := "/sys/class/backlight/panel1-backlight/brightness"
+TW_MAX_SECONDARY_BRIGHTNESS := 255
+TW_DEFAULT_SECONDARY_BRIGHTNESS := 0
+# 尝试在启动时禁用副屏
+TW_SCREEN_BLANK_ON_BOOT := true
+
+# 三星设备专用配置
+TW_USE_SAMSUNG_HAPTICS := true
+TW_USE_NEW_MINADBD := true
+TW_NO_LEGACY_PROPS := true
+TW_EXCLUDE_APEX := true
+# 覆盖系统属性，防止与三星原厂系统冲突
+TW_OVERRIDE_SYSTEM_PROPS := \
+    "ro.build.product;ro.build.fingerprint;ro.build.version.incremental;ro.product.device=ro.product.system.device;ro.product.model=ro.product.system.model;ro.product.name=ro.product.system.name"
+
+# 其他有助于稳定的配置
+TW_INCLUDE_RESETPROP := true
+TW_INCLUDE_REPACKTOOLS := true
+TW_INCLUDE_FASTBOOTD := true
+TW_Y_OFFSET := 0
+TW_H_OFFSET := 0
