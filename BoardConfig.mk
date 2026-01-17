@@ -137,35 +137,15 @@ TW_USE_FSCRYPT_POLICY := 2
 TW_PREPARE_DATA_MEDIA_EARLY := true
 
 # 4. 修复启动模式切换问题（misc处理）
-# 允许通过工具盒重启
-TW_USE_TOOLBOX := true
 # 三星设备特有的下载模式支持
 TW_HAS_DOWNLOAD_MODE := true
 
-# 5. 修复副屏冻结问题
-# 对于折叠屏/双屏设备，尝试禁用副屏或设置其亮度为0
-TW_NO_SECONDARY_BRIGHTNESS := true
-TW_SECONDARY_BRIGHTNESS_PATH := "/sys/class/backlight/panel1-backlight/brightness"
-TW_MAX_SECONDARY_BRIGHTNESS := 50000
-TW_DEFAULT_SECONDARY_BRIGHTNESS := 0
-# 尝试在启动时禁用副屏
-TW_SCREEN_BLANK_ON_BOOT := true
-
 # 三星设备专用配置
 TW_USE_SAMSUNG_HAPTICS := true
-TW_USE_NEW_MINADBD := true
-TW_NO_LEGACY_PROPS := true
-TW_EXCLUDE_APEX := true
 # 覆盖系统属性，防止与三星原厂系统冲突
-TW_OVERRIDE_SYSTEM_PROPS := \
-    "ro.build.product;ro.build.fingerprint;ro.build.version.incremental;ro.product.device=ro.product.system.device;ro.product.model=ro.product.system.model;ro.product.name=ro.product.system.name"
-
 # 其他有助于稳定的配置
 TW_INCLUDE_RESETPROP := true
-TW_INCLUDE_REPACKTOOLS := true
 TW_INCLUDE_FASTBOOTD := true
 TW_Y_OFFSET := 0
 TW_H_OFFSET := 0
 TW_EXCLUDE_TWRPAPP := true
-# 使用高压缩率的算法
-BOARD_RAMDISK_USE_XZ := true
